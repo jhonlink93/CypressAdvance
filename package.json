@@ -1,0 +1,19 @@
+{
+  "name": "cyprescursoencorapart2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open",
+    "run:test": "npx cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.10.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}
