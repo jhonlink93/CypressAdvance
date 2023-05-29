@@ -27,4 +27,24 @@ describe('test con intercept', () => {
         //cy.wait('@bulbasaur').its('response.statusCode').should('eq', 200)
     });
 
+    it('Probar intercept forzar fallo', () => {
+        cy.intercept(
+            'GET',
+            'https://pokeapi.co/api/v2/pokemon-species/1', { forceNetworkError: true }
+        ).as('error');
+        cy.visit('/');
+        cy.contains('Bulbasaur')
+            .parent()
+            .parent()
+            .within((element) => {
+                cy.wrap(element).contains('Más detalles').click()
+            })
+        cy.wait('@error').should('have.a.property', 'error')
+    });
+    it('prueba intercept cambiando propiedades', () => {
+        cy.intercept(
+            'GET',
+            'https://pokeapi.co/api/v2/pokemon-species/1', { statusCode: 200 },
+        ).as('picachu');
+    });
 })
